@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_margin="8dp"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical">
+        <TextView
+            style="@style/TextTitle"
+            android:text="馬達加斯加 猴麵包樹 夢幻生態天堂10天" />
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:paddingLeft="16dp"
+            android:text="2020/10/01~2020/10/20" />
+        <TextView
+            style="@style/TextAboveInputField"
+            android:layout_marginTop="20dp"
+            android:text="@string/user_id" />
+        <EditText
+            android:id="@+id/user_id"
+            style="@style/InputField"
+            android:hint="輸入使用者ID"
+            android:inputType="number" />
+
+        <TextView
+            style="@style/TextAboveInputField"
+            android:text="@string/num_of_people" />
+        <EditText
+            android:id="@+id/num_of_people"
+            style="@style/InputField"
+            android:hint="輸入參加人數"
+            android:inputType="number" />
+        <!--
+        <TextView
+            style="@style/TextAboveInputField"
+            android:text="總價 : " />
+        <TextView
+            android:id="@+id/total_price"
+            style="@style/TextAboveInputField"
+            android:text="$100000" />
+        -->
+
+        <Button
+            android:id="@+id/order_button2"
+            style="@style/ButtonBottom"
+            android:text="@string/order" />
+
+
+        <TextView
+            android:id="@+id/order_tour_warning"
+            style="@style/WarningText"
+            android:text="" />
+
+
+    </LinearLayout>
+
+</ScrollView>

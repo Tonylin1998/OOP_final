@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_margin="8dp"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/TextAboveInputField"
+            android:layout_marginTop="20dp"
+            android:text="修改人數" />
+        <EditText
+            android:id="@+id/new_num_of_people"
+            style="@style/InputField"
+            android:hint="輸入新人數"
+            android:inputType="number" />
+
+        <Button
+            android:id="@+id/modify_button"
+            style="@style/ButtonBottom"
+            android:text="修改" />
+
+        <TextView
+            android:id="@+id/modify_warning"
+            style="@style/WarningText"
+            android:text="" />
+
+
+    </LinearLayout>
+
+</ScrollView>

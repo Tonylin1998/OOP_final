@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">oop_final_travel</string>
+    <string name="title_activity_search_tour">SearchTourActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="wanna_go_place">想去的地方</string>
+    <string name="wanna_go_place_hint">輸入國家或地名</string>
+    <string name="search">搜尋</string>
+    <string name="search_tour">查詢及預訂行程</string>
+    <string name="search_result">查詢結果</string>
+    <string name="input_place_error">查無此地區!</string>
+    <string name="date_format_error">日期格式錯誤!</string>
+    <string name="data_no_found">查無資料!</string>
+    <string name="order_page">預定行程</string>
+    <string name="order_result">訂單資訊</string>
+    <string name="order_title">訂單名稱</string>
+    <string name="order_id">訂單編號</string>
+    <string name="user_id">使用者ID</string>
+    <string name="num_of_people">人數</string>
+    <string name="order">預定</string>
+    <string name="date">日期</string>
+    <string name="total_price">總價</string>
+    <string name="search_and_modify_order">查詢及修改訂單</string>
+    <string name="modify_order">修改訂單</string>
+    <string name="delete_order">刪除訂單</string>
+
+
+</resources>
