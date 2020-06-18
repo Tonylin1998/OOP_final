@@ -17,7 +17,7 @@ import com.example.oop_final_travel.data.TourList;
 import com.example.oop_final_travel.R;
 
 public class OrderActivity extends AppCompatActivity {
-    private EditText input_user_id, input_num_of_people;
+    private EditText  input_num_of_people;
     private int tour_id;
 
     @Override
@@ -27,7 +27,17 @@ public class OrderActivity extends AppCompatActivity {
 
         tour_id = getIntent().getIntExtra("tour_id", 0);
 
-        input_user_id = (EditText) findViewById(R.id.user_id);
+        String title = TourList.tours.get(tour_id).title;
+        String date = TourList.tours.get(tour_id).start_date + "~" + TourList.tours.get(tour_id).end_date;
+
+
+        TextView order_text_title = (TextView)findViewById(R.id.order_text_title);
+        order_text_title.setText(title);
+        TextView order_date = (TextView)findViewById(R.id.order_date);
+        order_date.setText(date);
+
+
+        //input_user_id = (EditText) findViewById(R.id.user_id);
         input_num_of_people = (EditText) findViewById(R.id.num_of_people);
 
         Button order = (Button) findViewById(R.id.order_button2);
@@ -46,6 +56,7 @@ public class OrderActivity extends AppCompatActivity {
         int user_id, num_of_people;
 
         // parse user inputs
+        /*
         try {
             user_id = Integer.parseInt(input_user_id.getText().toString());
         } catch (NumberFormatException e) {
@@ -53,6 +64,8 @@ public class OrderActivity extends AppCompatActivity {
             order_tour_warning.setText("使用者ID格式錯誤!");
             return;
         }
+        */
+
         // parse user inputs
         try {
             num_of_people = Integer.parseInt(input_num_of_people.getText().toString());
@@ -75,7 +88,7 @@ public class OrderActivity extends AppCompatActivity {
 
         // create new order
         ContentValues values = new ContentValues();
-        values.put("user_id", user_id);
+        values.put("user_id", LoginActivity.user_id);
         values.put("tour_id", tour_id);
         values.put("num_of_people", num_of_people);
 
@@ -86,11 +99,11 @@ public class OrderActivity extends AppCompatActivity {
 
 
 
-        // pass the result to SearchAvailableActivity
+
         Intent intent = new Intent(OrderActivity.this, OrderResultActivity.class);
         intent.putExtra("order_id", newuri.getLastPathSegment());
         intent.putExtra("tour_id", tour_id);
-        intent.putExtra("user_id", user_id);
+        intent.putExtra("user_id", LoginActivity.user_id);
         intent.putExtra("num_of_people", num_of_people);
         startActivity(intent);
 

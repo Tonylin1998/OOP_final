@@ -4,16 +4,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:gravity="center"
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/search_tour"
-        style="@style/CategoryButton"
-        android:text="@string/search_tour" />
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:id="@+id/login"
+        style="@style/ButtonMain"
+        android:text="@string/login" />
     <Button
-        android:id="@+id/search_order"
-        style="@style/CategoryButton"
-        android:text="@string/search_and_modify_order" />
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:id="@+id/regist"
+        style="@style/ButtonMain"
+        android:text="@string/regist" />
 
 
 </LinearLayout>

@@ -31,16 +31,22 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
      */
     @Override
     public void onCreate(SQLiteDatabase db) {
-        Log.d("test", "onCreate:");
         // Create a String that contains the SQL statement to create the orders table
         String SQL_CREATE_ORDERS_TABLE =  "CREATE TABLE " + "orders" + " ("
                 + "order_id" + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + "user_id" + " INTEGER NOT NULL, "
+                + "user_id" + " TEXT NOT NULL, "
                 + "tour_id" + " INTEGER NOT NULL, "
                 + "num_of_people" + " INTEGER NOT NULL );";
 
         // Execute the SQL statement
         db.execSQL(SQL_CREATE_ORDERS_TABLE);
+
+        String SQL_CREATE_LOGIN_TABLE =  "CREATE TABLE " + "login" + " ("
+                + "user_id" + " TEXT NOT NULL, "
+                + "password" + " TEXT NOT NULL );";
+        db.execSQL(SQL_CREATE_LOGIN_TABLE);
+
+
     }
 
     /**

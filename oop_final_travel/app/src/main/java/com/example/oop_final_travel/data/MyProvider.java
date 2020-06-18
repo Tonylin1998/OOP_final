@@ -18,13 +18,16 @@ public class MyProvider extends ContentProvider {
     // variable for uri matcher and match code
     private static final UriMatcher sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
     private static final int ORDERS = 100;
+    private static final int LOGIN = 101;
 
     // Initialize variable we need
     @Override
     public boolean onCreate() {
         //getContext().deleteDatabase("Data.db");
+
         mDbHelper = new MySQLiteHelper(getContext());
         sUriMatcher.addURI("com.example.oop_final_travel", "orders", ORDERS);
+        sUriMatcher.addURI("com.example.oop_final_travel", "login", LOGIN);
         return true;
     }
 
@@ -48,6 +51,9 @@ public class MyProvider extends ContentProvider {
         switch (match) {
             case ORDERS:
                 cursor = database.query("orders", projection, selection, selectionArgs, null, null, sortOrder);
+                break;
+            case LOGIN:
+                cursor = database.query("login", projection, selection, selectionArgs, null, null, sortOrder);
                 break;
             default:
                 throw new IllegalArgumentException("Cannot query unknown URI " + uri);
@@ -74,7 +80,9 @@ public class MyProvider extends ContentProvider {
         final int match = sUriMatcher.match(uri);
         switch (match){
             case ORDERS:
-                return insertOrder(uri, values);
+                return insertOrder(uri, values, "orders");
+            case LOGIN:
+                return insertOrder(uri, values, "login");
         }
         return null;
     }
@@ -86,9 +94,9 @@ public class MyProvider extends ContentProvider {
      * @param values what we want to insert
      * @return a new uri of the row we insert
      */
-    private Uri insertOrder(Uri uri, ContentValues values){
+    private Uri insertOrder(Uri uri, ContentValues values, String table_name){
         SQLiteDatabase database = mDbHelper.getWritableDatabase();
-        long id = database.insert("orders", null, values);
+        long id = database.insert(table_name, null, values);
         getContext().getContentResolver().notifyChange(uri, null);
         return ContentUris.withAppendedId(uri, id);
     }
@@ -108,8 +116,10 @@ public class MyProvider extends ContentProvider {
         int rowsDeleted;
         switch (match) {
             case ORDERS:
-                // Delete all rows that match the selection and selection args
                 rowsDeleted = database.delete("orders", selection, selectionArgs);
+                break;
+            case LOGIN:
+                rowsDeleted = database.delete("login", selection, selectionArgs);
                 break;
             default:
                 throw new IllegalArgumentException("Deletion is not supported for " + uri);

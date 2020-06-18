@@ -9,7 +9,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name=".activities.RegistActivity"
+            android:label="@string/regist"
+            android:parentActivityName=".MainActivity">
 
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".activities.LoginActivity"
+            android:label="@string/login"
+            android:parentActivityName=".MainActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity android:name=".activities.MainPageActivity"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,7 +40,7 @@
         <activity
             android:name=".activities.SearchTourActivity"
             android:label="@string/search_tour"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".activities.MainPageActivity">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
@@ -50,7 +70,7 @@
         <activity
             android:name=".activities.OrderResultActivity"
             android:label="@string/order_result"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".activities.MainPageActivity">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
@@ -60,7 +80,7 @@
         <activity
             android:name=".activities.SearchOrderActivity"
             android:label="@string/search_and_modify_order"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".activities.MainPageActivity">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
@@ -96,7 +116,6 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
-
         </activity>
 
         <provider

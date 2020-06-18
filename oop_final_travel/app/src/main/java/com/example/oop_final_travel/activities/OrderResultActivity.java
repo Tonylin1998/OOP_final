@@ -9,8 +9,8 @@ import com.example.oop_final_travel.R;
 import com.example.oop_final_travel.data.TourList;
 
 public class OrderResultActivity extends AppCompatActivity {
-    private int tour_id, user_id, num_of_people, price;
-    private String order_id, title, date;
+    private int tour_id,  num_of_people, price;
+    private String user_id, order_id, title, date;
 
 
 
@@ -21,7 +21,7 @@ public class OrderResultActivity extends AppCompatActivity {
 
         order_id = getIntent().getStringExtra("order_id");
         tour_id = getIntent().getIntExtra("tour_id", 0);
-        user_id = getIntent().getIntExtra("user_id", 0);
+        user_id = getIntent().getStringExtra("user_id");
         num_of_people = getIntent().getIntExtra("num_of_people", 0);
 
         price = TourList.tours.get(tour_id).price * num_of_people;
@@ -34,7 +34,7 @@ public class OrderResultActivity extends AppCompatActivity {
         order_result_order_id.setText(order_id);
 
         TextView order_result_user_id = (TextView) findViewById(R.id.order_result_user_id);
-        order_result_user_id.setText(String.valueOf(user_id));
+        order_result_user_id.setText(user_id);
 
         TextView order_result_title = (TextView) findViewById(R.id.order_result_title);
         order_result_title.setText(title);

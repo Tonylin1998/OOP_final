@@ -15,7 +15,8 @@ import com.example.oop_final_travel.R;
 import com.example.oop_final_travel.Utils;
 
 public class ModifyOrderActivity extends AppCompatActivity {
-    private int user_id, order_id, tour_id, new_num_of_people;
+    private int order_id, tour_id, new_num_of_people;
+    private String user_id;
     EditText new_num_of_people_input;
 
 
@@ -25,7 +26,7 @@ public class ModifyOrderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modify_order);
 
-        user_id = getIntent().getIntExtra("user_id", 0);
+        user_id = getIntent().getStringExtra("user_id");
         order_id = getIntent().getIntExtra("order_id", 0);
         tour_id = getIntent().getIntExtra("tour_id", 0);
 
@@ -64,7 +65,7 @@ public class ModifyOrderActivity extends AppCompatActivity {
 
         Uri CONTENT_URI = Uri.parse("content://com.example.oop_final_travel/orders");
         String cmd = "user_id =? AND order_id =?";
-        String[] args = new String[]{ Integer.toString(user_id), Integer.toString(order_id) };
+        String[] args = new String[]{ user_id, Integer.toString(order_id) };
         ContentValues values = new ContentValues();
         values.put("num_of_people", new_num_of_people);
 

@@ -15,7 +15,8 @@ import com.example.oop_final_travel.R;
 import com.example.oop_final_travel.data.TourList;
 
 public class SearchOrderResultActivity extends AppCompatActivity {
-    private int tour_id, price, order_id, user_id, num_of_people;
+    private int tour_id, price, order_id,  num_of_people;
+    private String user_id;
     String title, date;
 
     @Override
@@ -26,7 +27,7 @@ public class SearchOrderResultActivity extends AppCompatActivity {
         tour_id = getIntent().getIntExtra("tour_id", 0);
         num_of_people = getIntent().getIntExtra("num_of_people", 0);
         order_id = getIntent().getIntExtra("order_id", 0);
-        user_id = getIntent().getIntExtra("user_id", 0);
+        user_id = getIntent().getStringExtra("user_id");
 
         price = TourList.tours.get(tour_id).price * num_of_people;
         title = TourList.tours.get(tour_id).title;
@@ -80,7 +81,7 @@ public class SearchOrderResultActivity extends AppCompatActivity {
     private void deleteOrder(){
         Uri CONTENT_URI = Uri.parse("content://com.example.oop_final_travel/orders");
         String cmd = "user_id =? AND order_id =?";
-        String[] args = new String[]{ Integer.toString(user_id), Integer.toString(order_id) };
+        String[] args = new String[]{ user_id, Integer.toString(order_id) };
 
         getContentResolver().delete(
                 CONTENT_URI,

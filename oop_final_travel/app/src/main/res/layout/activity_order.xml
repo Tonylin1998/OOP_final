@@ -11,13 +11,16 @@
         android:layout_marginTop="8dp"
         android:orientation="vertical">
         <TextView
+            android:id="@+id/order_text_title"
             style="@style/TextTitle"
             android:text="馬達加斯加 猴麵包樹 夢幻生態天堂10天" />
         <TextView
+            android:id="@+id/order_date"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:paddingLeft="16dp"
             android:text="2020/10/01~2020/10/20" />
+        <!--
         <TextView
             style="@style/TextAboveInputField"
             android:layout_marginTop="20dp"
@@ -27,6 +30,7 @@
             style="@style/InputField"
             android:hint="輸入使用者ID"
             android:inputType="number" />
+        -->
 
         <TextView
             style="@style/TextAboveInputField"

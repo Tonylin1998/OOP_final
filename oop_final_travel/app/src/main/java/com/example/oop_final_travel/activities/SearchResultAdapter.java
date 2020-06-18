@@ -63,7 +63,7 @@ public class SearchResultAdapter extends ArrayAdapter<SearchResult> {
             @Override
             public void onClick(View view) {
                 Log.d("press", "onClick: "+tour_id);
-                Toast.makeText(c, "item at position " + currentPosition, Toast.LENGTH_SHORT).show();
+                Toast.makeText(c, "item at position " + currentPosition, Toast.LENGTH_SHORT);
                 Intent OrderIntent = new Intent(c, OrderActivity.class);
                 OrderIntent.putExtra("tour_id", tour_id);
                 c.startActivity(OrderIntent);

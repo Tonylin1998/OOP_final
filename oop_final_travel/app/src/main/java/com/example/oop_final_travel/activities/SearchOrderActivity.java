@@ -21,7 +21,7 @@ import static com.example.oop_final_travel.data.TourList.place_to_code;
 
 public class SearchOrderActivity extends AppCompatActivity {
 
-    private EditText input_user_id, input_order_id;
+    private EditText input_order_id;
 
 
     @Override
@@ -31,7 +31,7 @@ public class SearchOrderActivity extends AppCompatActivity {
 
 
 
-        input_user_id = (EditText) findViewById(R.id.user_id);
+        //input_user_id = (EditText) findViewById(R.id.user_id);
         input_order_id = (EditText) findViewById(R.id.order_id);
 
         Button order = (Button) findViewById(R.id.order_button3);
@@ -45,6 +45,7 @@ public class SearchOrderActivity extends AppCompatActivity {
     private void searchOrder(){
         int user_id, order_id;
         // parse user inputs
+        /*
         try {
             user_id = Integer.parseInt(input_user_id.getText().toString());
         } catch (NumberFormatException e) {
@@ -52,6 +53,8 @@ public class SearchOrderActivity extends AppCompatActivity {
             search_order_warning.setText("使用者ID格式錯誤!");
             return;
         }
+        */
+
 
         try {
             order_id = Integer.parseInt(input_order_id.getText().toString());
@@ -62,7 +65,7 @@ public class SearchOrderActivity extends AppCompatActivity {
         }
 
         String cmd = "user_id =? AND order_id =? ";
-        String[] args = new String[]{Integer.toString(user_id), Integer.toString(order_id)};
+        String[] args = new String[]{LoginActivity.user_id, Integer.toString(order_id)};
         String[] projection = {"tour_id", "num_of_people"};
 
         Uri CONTENT_URI = Uri.parse("content://com.example.oop_final_travel/orders");
@@ -91,7 +94,7 @@ public class SearchOrderActivity extends AppCompatActivity {
 
         Intent intent = new Intent(SearchOrderActivity.this, SearchOrderResultActivity.class);
         intent.putExtra("tour_id", tour_id);
-        intent.putExtra("user_id", user_id);
+        intent.putExtra("user_id", LoginActivity.user_id);
         intent.putExtra("order_id", order_id);
         intent.putExtra("num_of_people", num_of_people);
         startActivity(intent);
