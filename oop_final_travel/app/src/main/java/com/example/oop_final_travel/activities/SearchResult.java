@@ -1,6 +1,5 @@
 package com.example.oop_final_travel.activities;
 
-
 import java.io.Serializable;
 
 
@@ -52,13 +51,6 @@ public class SearchResult implements Comparable<SearchResult>, Serializable {
         else if (price == o.price) return 0;
         else return -1;
     }
-    /*
-
-    @Override
-    public String toString() {
-        return star + " " + price;
-    }
-    */
 }
 
 

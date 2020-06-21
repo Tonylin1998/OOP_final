@@ -15,11 +15,7 @@ import java.util.concurrent.BlockingDeque;
 
 public class Utils {
     /**
-     * Check if date is valid
-     *
-     * @param raw_date the date to check
-     * @return formatted date
-     * @throws ParseException if fail, it will throw exception
+     * check date data's format
      */
     public static String parseDate(String raw_date) throws ParseException {
         try {
@@ -35,6 +31,13 @@ public class Utils {
         }
     }
 
+    /**
+     * check tour's available number when new order
+     * @param context
+     * @param tour_id
+     * @param num_of_people
+     * @return
+     */
     public static boolean checkLimit(Context context, int tour_id, int num_of_people){
         String cmd = "tour_id =? ";
         String[] args = new String[]{Integer.toString(tour_id)};
@@ -58,6 +61,14 @@ public class Utils {
         return true;
     }
 
+    /**
+     * check tour's available number when modify
+     * @param context
+     * @param order_id
+     * @param tour_id
+     * @param new_num_of_people
+     * @return
+     */
     public static boolean checkNewLimit(Context context, int order_id, int tour_id, int new_num_of_people){
         String cmd = "tour_id =? AND order_id !=?";
         String[] args = new String[]{Integer.toString(tour_id), Integer.toString(order_id)};

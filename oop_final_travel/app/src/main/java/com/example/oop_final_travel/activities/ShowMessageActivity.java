@@ -15,6 +15,7 @@ public class ShowMessageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_message);
 
+        // shoe message
         message = getIntent().getStringExtra("message");
         TextView message_view = (TextView)findViewById(R.id.message);
         message_view.setText(message);

@@ -53,7 +53,7 @@ public class SearchOrderResultActivity extends AppCompatActivity {
         TextView order_result_total_price = (TextView) findViewById(R.id.order_result_total_price);
         order_result_total_price.setText(String.valueOf(price));
 
-
+        // click listener on modify order
         Button modify_order = (Button) findViewById(R.id.modify_order_button);
         modify_order.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +62,7 @@ public class SearchOrderResultActivity extends AppCompatActivity {
             }
         });
 
+        // click listener on delete order
         Button delete_order = (Button) findViewById(R.id.delete_order_button);
         delete_order.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,15 +71,23 @@ public class SearchOrderResultActivity extends AppCompatActivity {
             }
         });
     }
+
+    /**
+     * modidfy order
+     */
     private void modifyOrder(){
+        // pass information to ModifyOrderActivity
         Intent intent = new Intent(SearchOrderResultActivity.this, ModifyOrderActivity.class);
         intent.putExtra("user_id", user_id);
         intent.putExtra("order_id", order_id);
         intent.putExtra("tour_id", tour_id);
         startActivity(intent);
     }
-
+    /**
+     * delete order
+     */
     private void deleteOrder(){
+        // delete data in database
         Uri CONTENT_URI = Uri.parse("content://com.example.oop_final_travel/orders");
         String cmd = "user_id =? AND order_id =?";
         String[] args = new String[]{ user_id, Integer.toString(order_id) };
@@ -88,6 +97,8 @@ public class SearchOrderResultActivity extends AppCompatActivity {
                 cmd,
                 args
         );
+
+        // show message
         Intent intent = new Intent(SearchOrderResultActivity.this, ShowMessageActivity.class);
         intent.putExtra("message", "成功刪除訂單!");
         startActivity(intent);

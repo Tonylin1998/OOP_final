@@ -22,29 +22,7 @@ public class TourList {
 
     private static boolean isInit = false;
 
-    /*
-    private static int orderCount(Context context, int hotelID) {
-        String whereClause = OrderContract.OrderEntry.COLUMN_HOTEL_ID + " =?";
-        String[] selectionArgs = new String[]{
-                String.valueOf(hotelID)
-        };
-        String[] projection = {
-                OrderContract.OrderEntry.COLUMN_ORDER_ID,
-        };
 
-        // the cursor from query
-        Cursor cursor = context.getContentResolver().query(
-                OrderContract.OrderEntry.CONTENT_URI,
-                projection,
-                whereClause,
-                selectionArgs,
-                null
-        );
-
-        return cursor.getCount();
-    }
-
-     */
 
     // init hotels
     public static void init(Context context) {
@@ -137,7 +115,6 @@ public class TourList {
 
     }
 
-    // private constructor
     private TourList() { }
 
 }

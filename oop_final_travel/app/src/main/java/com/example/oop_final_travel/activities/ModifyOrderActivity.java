@@ -32,7 +32,7 @@ public class ModifyOrderActivity extends AppCompatActivity {
 
         new_num_of_people_input = (EditText) findViewById(R.id.new_num_of_people);
 
-
+        // click listener on modify
         Button order = (Button) findViewById(R.id.modify_button);
         order.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,9 +41,14 @@ public class ModifyOrderActivity extends AppCompatActivity {
             }
         });
     }
+
+    /**
+     * modify order
+     */
     private void modifyOrder(){
         int new_num_of_people;
-        // parse user inputs
+
+        // check user input's format
         try {
             new_num_of_people = Integer.parseInt(new_num_of_people_input.getText().toString());
         } catch (NumberFormatException e) {
@@ -57,12 +62,14 @@ public class ModifyOrderActivity extends AppCompatActivity {
             return;
         }
 
+        // check the available number
         if(!Utils.checkNewLimit(this, order_id, tour_id, new_num_of_people)){
             TextView order_tour_warning = (TextView) findViewById(R.id.order_tour_warning);
             order_tour_warning.setText("剩餘數量不足 !");
             return;
         }
 
+        // update the database's data
         Uri CONTENT_URI = Uri.parse("content://com.example.oop_final_travel/orders");
         String cmd = "user_id =? AND order_id =?";
         String[] args = new String[]{ user_id, Integer.toString(order_id) };

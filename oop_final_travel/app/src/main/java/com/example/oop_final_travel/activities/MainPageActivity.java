@@ -18,7 +18,7 @@ public class MainPageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
 
-        // click listener on search_available
+        // click listener on search_tour
         Button search_tour = (Button) findViewById(R.id.search_tour);
         search_tour.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -28,6 +28,7 @@ public class MainPageActivity extends AppCompatActivity {
             }
         });
 
+        // click listener on search_order
         Button search_order = (Button) findViewById(R.id.search_order);
         search_order.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,6 +38,7 @@ public class MainPageActivity extends AppCompatActivity {
             }
         });
 
+        // click listener on logout
         Button logout = (Button) findViewById(R.id.logout);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override

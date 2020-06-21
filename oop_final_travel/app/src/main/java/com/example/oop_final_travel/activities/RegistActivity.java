@@ -31,6 +31,7 @@ public class RegistActivity extends AppCompatActivity {
         input_user_id = (EditText) findViewById(R.id.user_id);
         input_password = (EditText) findViewById(R.id.password);
 
+        // click listener on regist
         final Button regist = (Button) findViewById(R.id.regist_button);
         regist.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,7 +41,11 @@ public class RegistActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * regist a new user and password
+     */
     private void regist() {
+        // check user input's format
         user_id = input_user_id.getText().toString();
         if(user_id.length() < 4){
             TextView regist_warning = (TextView)findViewById(R.id.regist_warning);
@@ -55,6 +60,8 @@ public class RegistActivity extends AppCompatActivity {
         }
 
 
+        // check whether the user id is used in database
+        // if not, create new data in database
         String cmd = "user_id =? ";
         String[] args = new String[]{user_id};
         String[] projection = {"password"};
@@ -70,13 +77,12 @@ public class RegistActivity extends AppCompatActivity {
             return;
         }
 
-
         ContentValues values = new ContentValues();
         values.put("user_id", user_id);
         values.put("password", password);
         Uri newuri = getContentResolver().insert(CONTENT_URI, values);
 
-
+        // return to main activity
         Intent intent = new Intent(RegistActivity.this, MainActivity.class);
         startActivity(intent);
     }

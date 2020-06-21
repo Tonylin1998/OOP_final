@@ -2,7 +2,7 @@ package com.example.oop_final_travel.data;
 
 
 public class Tour {
-    // variables for tour
+
     public int tour_id;
     public String title;
     public int travel_code;
@@ -29,7 +29,7 @@ public class Tour {
         this.count = count;
     }
 
-    // checking function of data
+
     @Override
     public String toString() {
         return this.tour_id + " " + this.title + " " + this.travel_code + " " + this.product_key + " " + this.price + " "

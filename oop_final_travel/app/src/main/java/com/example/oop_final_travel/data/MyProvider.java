@@ -12,19 +12,17 @@ import android.util.Log;
 
 public class MyProvider extends ContentProvider {
 
-    // variable for database helper
     private MySQLiteHelper mDbHelper;
 
-    // variable for uri matcher and match code
-    private static final UriMatcher sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
-    private static final int ORDERS = 100;
-    private static final int LOGIN = 101;
 
-    // Initialize variable we need
+    private static final UriMatcher sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
+    private static final int ORDERS = 123;
+    private static final int LOGIN = 456;
+
+
     @Override
     public boolean onCreate() {
         //getContext().deleteDatabase("Data.db");
-
         mDbHelper = new MySQLiteHelper(getContext());
         sUriMatcher.addURI("com.example.oop_final_travel", "orders", ORDERS);
         sUriMatcher.addURI("com.example.oop_final_travel", "login", LOGIN);
@@ -32,19 +30,10 @@ public class MyProvider extends ContentProvider {
     }
 
     /**
-     *
-     * Query from database
-     *
-     * @param uri the uri of table
-     * @param projection the columns we want
-     * @param selection the range of what we confine
-     * @param selectionArgs the arguments of range clause
-     * @param sortOrder the sort order
-     * @return the cursor we query
+     * query data from database
      */
     @Override
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
-        // variables for database, cursor, and the match code
         SQLiteDatabase database = mDbHelper.getReadableDatabase();
         Cursor cursor = null;
         int match = sUriMatcher.match(uri);
@@ -62,18 +51,14 @@ public class MyProvider extends ContentProvider {
         return cursor;
     }
 
-    // We didn't use it
+
     @Override
     public String getType(Uri uri) {
         return null;
     }
 
     /**
-     * Insert into database
-     *
-     * @param uri the uri of table
-     * @param values what we want to insert
-     * @return a new uri of the row we insert
+     * insert data into database
      */
     @Override
     public Uri insert(Uri uri, ContentValues values) {
@@ -86,14 +71,6 @@ public class MyProvider extends ContentProvider {
         }
         return null;
     }
-
-    /**
-     * the helping method of insertion
-     *
-     * @param uri the uri of table
-     * @param values what we want to insert
-     * @return a new uri of the row we insert
-     */
     private Uri insertOrder(Uri uri, ContentValues values, String table_name){
         SQLiteDatabase database = mDbHelper.getWritableDatabase();
         long id = database.insert(table_name, null, values);
@@ -102,12 +79,7 @@ public class MyProvider extends ContentProvider {
     }
 
     /**
-     * Deletion of database
-     *
-     * @param uri the uri of the table
-     * @param selection the range of what we confine
-     * @param selectionArgs the arguments of range clause
-     * @return return the rows being deleted
+     * delete data from database
      */
     @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {
@@ -131,9 +103,7 @@ public class MyProvider extends ContentProvider {
     }
 
     /**
-     * Update three types of rooms and the days they stayed
-     * specified in the selection and selection arguments (which could be 0 or 1 or more rooms).
-     * Return the number of rows that were successfully updated.
+     * update the data in database
      */
     @Override
     public int update(Uri uri, ContentValues contentValues, String selection,
@@ -143,6 +113,8 @@ public class MyProvider extends ContentProvider {
         switch (match) {
             case ORDERS:
                 return database.update("orders", contentValues, selection, selectionArgs);
+            case LOGIN:
+                return database.update("login", contentValues, selection, selectionArgs);
             default:
                 throw new IllegalArgumentException("Update is not supported for " + uri);
         }

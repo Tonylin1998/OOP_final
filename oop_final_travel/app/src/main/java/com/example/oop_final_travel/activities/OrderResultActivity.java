@@ -29,7 +29,7 @@ public class OrderResultActivity extends AppCompatActivity {
         date = TourList.tours.get(tour_id).start_date + "~" + TourList.tours.get(tour_id).end_date;
 
 
-
+        // show order result
         TextView order_result_order_id = (TextView) findViewById(R.id.order_result_order_id);
         order_result_order_id.setText(order_id);
 

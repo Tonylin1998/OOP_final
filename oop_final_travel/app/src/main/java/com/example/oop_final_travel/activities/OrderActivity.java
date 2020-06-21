@@ -40,6 +40,7 @@ public class OrderActivity extends AppCompatActivity {
         //input_user_id = (EditText) findViewById(R.id.user_id);
         input_num_of_people = (EditText) findViewById(R.id.num_of_people);
 
+        // click listener on order
         Button order = (Button) findViewById(R.id.order_button2);
         order.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,12 +51,10 @@ public class OrderActivity extends AppCompatActivity {
     }
 
     /**
-     * search tour
+     * create new order
      */
     private void newOrder(){
         int user_id, num_of_people;
-
-        // parse user inputs
         /*
         try {
             user_id = Integer.parseInt(input_user_id.getText().toString());
@@ -66,7 +65,7 @@ public class OrderActivity extends AppCompatActivity {
         }
         */
 
-        // parse user inputs
+        // check user input's format
         try {
             num_of_people = Integer.parseInt(input_num_of_people.getText().toString());
         } catch (NumberFormatException e) {
@@ -80,26 +79,25 @@ public class OrderActivity extends AppCompatActivity {
             return;
         }
 
+        // check the available number
         if(!Utils.checkLimit(this, tour_id, num_of_people)){
             TextView order_tour_warning = (TextView) findViewById(R.id.order_tour_warning);
             order_tour_warning.setText("剩餘數量不足 !");
             return;
         }
 
-        // create new order
+        // create new data in database
         ContentValues values = new ContentValues();
         values.put("user_id", LoginActivity.user_id);
         values.put("tour_id", tour_id);
         values.put("num_of_people", num_of_people);
 
-
-        // insert into database
         Uri CONTENT_URI = Uri.parse("content://com.example.oop_final_travel/orders");
         Uri newuri = getContentResolver().insert(CONTENT_URI, values);
 
 
 
-
+        // show order result
         Intent intent = new Intent(OrderActivity.this, OrderResultActivity.class);
         intent.putExtra("order_id", newuri.getLastPathSegment());
         intent.putExtra("tour_id", tour_id);

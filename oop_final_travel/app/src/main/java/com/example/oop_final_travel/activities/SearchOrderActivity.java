@@ -34,6 +34,7 @@ public class SearchOrderActivity extends AppCompatActivity {
         //input_user_id = (EditText) findViewById(R.id.user_id);
         input_order_id = (EditText) findViewById(R.id.order_id);
 
+        // click listener on order
         Button order = (Button) findViewById(R.id.order_button3);
         order.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,6 +43,10 @@ public class SearchOrderActivity extends AppCompatActivity {
             }
         });
     }
+
+    /**
+     * search order
+     */
     private void searchOrder(){
         int user_id, order_id;
         // parse user inputs
@@ -55,7 +60,7 @@ public class SearchOrderActivity extends AppCompatActivity {
         }
         */
 
-
+        // check user input's format
         try {
             order_id = Integer.parseInt(input_order_id.getText().toString());
         } catch (NumberFormatException e) {
@@ -64,6 +69,7 @@ public class SearchOrderActivity extends AppCompatActivity {
             return;
         }
 
+        // search in database
         String cmd = "user_id =? AND order_id =? ";
         String[] args = new String[]{LoginActivity.user_id, Integer.toString(order_id)};
         String[] projection = {"tour_id", "num_of_people"};
@@ -91,7 +97,7 @@ public class SearchOrderActivity extends AppCompatActivity {
             return;
         }
 
-
+        // if data has been searched, pass information to SearchOrderResultActivity
         Intent intent = new Intent(SearchOrderActivity.this, SearchOrderResultActivity.class);
         intent.putExtra("tour_id", tour_id);
         intent.putExtra("user_id", LoginActivity.user_id);

@@ -34,8 +34,7 @@ public class SearchResultAdapter extends ArrayAdapter<SearchResult> {
 
         SearchResult tour = getItem(position);
 
-        //TextView tour_id_view = (TextView) listItemView.findViewById(R.id.tour_id);
-        //tour_id_view.setText(String.valueOf(tour.getTour_id()));
+
         final int tour_id = tour.getTour_id();
         final int currentPosition = position;
 
@@ -56,8 +55,8 @@ public class SearchResultAdapter extends ArrayAdapter<SearchResult> {
         String limit = "人數上限: " + tour.getUpper_bound() + "人";
         limit_view.setText(limit);
 
-        Log.d("gggg", "onClick: "+limit);
 
+        // click listener on order
         Button order = (Button) listItemView.findViewById(R.id.order_button1);
         order.setOnClickListener(new View.OnClickListener() {
             @Override

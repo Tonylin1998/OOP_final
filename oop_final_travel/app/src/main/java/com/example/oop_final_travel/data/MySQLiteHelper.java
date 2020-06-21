@@ -7,31 +7,20 @@ import android.util.Log;
 
 
 public class MySQLiteHelper extends SQLiteOpenHelper {
-    /**
-     * Name of the database file
-     */
-    private static final String DATABASE_NAME = "Data.db";
 
-    /**
-     * Database version.
-     */
+    private static final String DATABASE_NAME = "Data.db";
     private static final int DATABASE_VERSION = 1;
 
-    /**
-     * Constructs a new instance of {@link MySQLiteHelper}.
-     *
-     * @param context of the app
-     */
     public MySQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     /**
-     * This is called when the database is created for the first time.
+     * Create database
      */
     @Override
     public void onCreate(SQLiteDatabase db) {
-        // Create a String that contains the SQL statement to create the orders table
+
         String SQL_CREATE_ORDERS_TABLE =  "CREATE TABLE " + "orders" + " ("
                 + "order_id" + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + "user_id" + " TEXT NOT NULL, "

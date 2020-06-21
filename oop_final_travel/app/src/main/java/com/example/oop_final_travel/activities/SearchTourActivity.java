@@ -30,6 +30,7 @@ public class SearchTourActivity extends AppCompatActivity {
         input_place = (EditText) findViewById(R.id.place);
         input_depart_date = (EditText) findViewById(R.id.depart_date);
 
+        // click listener on search tour
         Button cancel = (Button) findViewById(R.id.search_tour_button);
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,7 +46,7 @@ public class SearchTourActivity extends AppCompatActivity {
     private void searchTour(){
         String place, depart_date;
 
-        // parse user inputs
+        // check user input's format
         place = input_place.getText().toString();
         if(!place_to_code.containsKey(place)){
             TextView search_tour_warning = (TextView)findViewById(R.id.search_tour_warning);
@@ -68,19 +69,15 @@ public class SearchTourActivity extends AppCompatActivity {
             if(TourList.tours.get(i).travel_code == travel_code && depart_date.compareTo(TourList.tours.get(i).start_date) < 0){
                 result.add(new SearchResult(i, TourList.tours.get(i).title, TourList.tours.get(i).start_date,
                         TourList.tours.get(i).end_date, TourList.tours.get(i).upper_bound, TourList.tours.get(i).price));
-                //TextView search_tour_warning = (TextView)findViewById(R.id.search_tour_warning);
-                //search_tour_warning.setText(""+i+" "+TourList.tours.get(i).title+" "+TourList.tours.get(i).start_date
-                //       +" "+TourList.tours.get(i).end_date+" "+TourList.tours.get(i).upper_bound+" "+TourList.tours.get(i).price);
             }
         }
-
         if (result.size() == 0) {
             TextView search_tour_warning = (TextView)findViewById(R.id.search_tour_warning);
             search_tour_warning.setText(R.string.data_no_found);
             return;
         }
 
-        // pass the result to SearchAvailableActivity
+        // pass the result to SSearchTourResultActivity
         Intent intent = new Intent(SearchTourActivity.this, SearchTourResultActivity.class);
         intent.putExtra("Tour_list", result);
         startActivity(intent);

@@ -26,6 +26,7 @@ public class LoginActivity extends AppCompatActivity {
         input_user_id = (EditText) findViewById(R.id.user_id);
         input_password = (EditText) findViewById(R.id.password);
 
+        // click listener on login
         Button login = (Button) findViewById(R.id.login_button);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,7 +35,12 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
+    /**
+     * check whether user can login or not
+     */
     private void login(){
+        // check the user input's format
         user_id = input_user_id.getText().toString();
         if(user_id.length() < 4){
             TextView regist_warning = (TextView)findViewById(R.id.regist_warning);
@@ -48,6 +54,7 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
+        // check the database's data
         String cmd = "user_id =? AND password =? ";
         String[] args = new String[]{user_id, password};
         String[] projection = {"user_id"};
@@ -63,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-
+        // login success
         Intent intent = new Intent(LoginActivity.this, MainPageActivity.class);
         startActivity(intent);
     }

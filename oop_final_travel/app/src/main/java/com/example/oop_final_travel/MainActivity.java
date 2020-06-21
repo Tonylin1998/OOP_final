@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         // init TourList
         TourList.init(this);
 
-        // click listener on search_available
+        // click listener on login
         Button login = (Button) findViewById(R.id.login);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // click listener on regist
         Button regist = (Button) findViewById(R.id.regist);
         regist.setOnClickListener(new View.OnClickListener() {
             @Override
